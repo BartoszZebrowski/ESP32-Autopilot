@@ -2,10 +2,11 @@
 
 #include "IInput.hpp"
 #include "InputData.hpp"
+#include "sbus.h"
 
 class Controller : public IInput{
 private:
-    InputData* inputData;
+    InputData* inputData = InputData::Get();
     bfs::SbusRx sbus_rx;
     bfs::SbusData data;
 

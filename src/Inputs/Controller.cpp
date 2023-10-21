@@ -1,10 +1,11 @@
 #include "sbus.h"
 #include "Controller.hpp"
+#include "InputData.hpp"
 
-Controller::Controller() : sbus_rx(&Serial2, GPIO_NUM_16, GPIO_NUM_17, true){}
+Controller::Controller() : sbus_rx(&Serial2, GPIO_NUM_16, GPIO_NUM_17, true) {}
 
 void Controller::Setup(){
-    inputData = InputData::GetInstance();
+
     sbus_rx.Begin();
 }
 
@@ -14,7 +15,9 @@ void Controller::Loop(){
 }
 
 void Controller::Print(){
-    Serial.print("Controller:");
+    Serial.print("Controller: ");
+    bfs::SbusData data = inputData->controllerData;
+
     for (byte i = 0; i < data.NUM_CH; i++) {
         Serial.print(data.ch[i]);
         Serial.print("\t");

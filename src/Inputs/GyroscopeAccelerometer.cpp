@@ -5,9 +5,9 @@
 #include <DFRobot_BMI160.h>
 #include <Arduino.h>
 
-void GyroscopeAccelerometer::Setup(){
-  inputData = InputData::GetInstance();
+GyroscopeAccelerometer::GyroscopeAccelerometer() {}
 
+void GyroscopeAccelerometer::Setup(){
   if (bmi160.softReset() != BMI160_OK){
     Serial.println("reset false");
     while(1);

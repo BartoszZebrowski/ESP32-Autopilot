@@ -4,5 +4,5 @@
 
 
 class IMode{
-    virtual OutputData Run(const InputData* inputData);
+    virtual OutputData& Run();
 };

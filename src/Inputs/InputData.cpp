@@ -2,13 +2,14 @@
 #include "sbus.h"
 #include "InputData.hpp"
 
-InputData::InputData(){
-    if( inputData != nullptr)
-        inputData = new InputData();
-}
+InputData* InputData::instance = nullptr;
 
-InputData* InputData::GetInstance(){
-    if( inputData != nullptr)
-        inputData = new InputData();
-    return inputData;
+InputData::InputData() {}
+
+InputData* InputData::Get(){
+    if(instance == nullptr){
+        instance = new InputData();
+    }
+
+    return instance;
 }

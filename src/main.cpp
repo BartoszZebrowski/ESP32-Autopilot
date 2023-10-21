@@ -2,35 +2,43 @@
 #include "sbus.h"
 #include <Servo.h>
 
+//inputs
 #include "Inputs/Controller.hpp"
 #include "Inputs/GyroscopeAccelerometer.hpp"
 #include "Inputs/InputsManager.hpp"
 
+//flyModes
+#include "FlyModes/ManualMode.hpp"
+
+//outputs
+#include "Outputs/OutputsManager.hpp"
+#include "Outputs/OutputData.hpp"
+
+
 Controller controler;
-//GyroscopeAccelerometer gyroscopeAccelerometer;
+GyroscopeAccelerometer gyroscopeAccelerometer;
 
 InputsManager inputsManager;
+OutputManager outputManager;
+OutputData outputData;
 
-Servo servoController;
+//Servo servoController;
+
+ManualMode manualMode;
 
 void setup() {
   Serial.begin(115200);
-
-  Serial.println("-----Setup-----");
+  outputData = OutputData();
 
   inputsManager.AddInput(&controler);
-  // inputsManager.AddInput(&gyroscopeAccelerometer);
 
   inputsManager.Setup();
-  
-
-  Serial.println("-----Loop-----");
 }
 
 void loop () {
   inputsManager.Loop(); 
+  outputData = manualMode.Run();
+  outputManager.ApplayOutputs(outputData);
 
-  Serial.println("-----In Loop-----");
-
-  inputsManager.Print();
+  // inputsManager.Print();
 }

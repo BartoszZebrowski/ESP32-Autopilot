@@ -2,7 +2,21 @@
 
 #include <cstdint>
 #include "Outputs/OutputData.hpp"
+#include <Servo.h>
 
 class OutputManager{
-    void applayOutputs(OutputData outputData){}
+private:
+    Servo servoController;
+
+    //pins
+    uint8_t enginePin = GPIO_NUM_33;
+
+    uint8_t rudderPin = 0; // yaw
+    uint8_t elevatorsPin = 0; // pitch - down-up
+    uint8_t aileronPin = 0; //roll - left-right
+
+    uint8_t flapsPin = 0;
+
+public:
+    void ApplayOutputs(OutputData& outputData);
 };

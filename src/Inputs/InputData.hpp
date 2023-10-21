@@ -14,15 +14,18 @@ struct AcceleroscopeData
 };
 
 class InputData{
-private: 
+protected: 
+
+  static InputData* instance;
   InputData();
 
 public: 
-  static InputData *inputData;
-  
+  InputData(const InputData&) = delete;
+  void operator=(const InputData &) = delete;
+
   bfs::SbusData controllerData;
   AcceleroscopeData acceleroscopeData; //x,y,z
   GyroscopeData gyroscopeData; //x,y,z
 
-  static InputData* GetInstance();
+  static InputData *Get();
 };
