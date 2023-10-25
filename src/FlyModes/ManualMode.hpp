@@ -5,5 +5,5 @@
 class ManualMode : IMode{
 public:
     ManualMode();
-    OutputData& Run() override;
+    void Run(OutputData& outputData) override;
 };

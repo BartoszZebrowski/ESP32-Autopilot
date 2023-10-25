@@ -14,6 +14,8 @@
 #include "Outputs/OutputsManager.hpp"
 #include "Outputs/OutputData.hpp"
 
+//settings
+bool debug = false;
 
 Controller controler;
 GyroscopeAccelerometer gyroscopeAccelerometer;
@@ -21,8 +23,6 @@ GyroscopeAccelerometer gyroscopeAccelerometer;
 InputsManager inputsManager;
 OutputManager outputManager;
 OutputData outputData;
-
-//Servo servoController;
 
 ManualMode manualMode;
 
@@ -37,8 +37,8 @@ void setup() {
 
 void loop () {
   inputsManager.Loop(); 
-  outputData = manualMode.Run();
+  manualMode.Run(outputData);
   outputManager.ApplayOutputs(outputData);
 
-  // inputsManager.Print();
+  //inputsManager.Print();
 }

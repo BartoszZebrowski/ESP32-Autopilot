@@ -4,5 +4,5 @@
 
 
 class IMode{
-    virtual OutputData& Run();
+    virtual void Run(OutputData& outputData);
 };

@@ -18,5 +18,6 @@ private:
     uint8_t flapsPin = 0;
 
 public:
+    OutputManager();
     void ApplayOutputs(OutputData& outputData);
 };
