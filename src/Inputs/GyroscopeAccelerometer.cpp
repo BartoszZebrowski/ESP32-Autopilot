@@ -27,14 +27,16 @@ void GyroscopeAccelerometer::Loop(){
   inputData->gyroscopeData.x = gyroscopeAccelerometerData[3];
   inputData->gyroscopeData.y = gyroscopeAccelerometerData[4];
   inputData->gyroscopeData.z = gyroscopeAccelerometerData[5];
+
+  //this->Print();
 }
 
 void GyroscopeAccelerometer::Print(){
   for(byte i = 0;i < 3;i++){
-      Serial.print(gyroscopeAccelerometerData[i]*3.14/180.0);Serial.print("\t"); //gyroscope
+     Serial.print(gyroscopeAccelerometerData[i]);Serial.print("\t"); // accelerometer to multiply in future
   }
   for(byte i = 3;i < 6;i++){
-    Serial.print(gyroscopeAccelerometerData[i]/16384.0);Serial.print("\t");
+    Serial.print(gyroscopeAccelerometerData[i]/180);Serial.print("\t");
   }
 
   Serial.println();

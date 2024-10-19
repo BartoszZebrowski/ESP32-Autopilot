@@ -8,14 +8,10 @@ class OutputManager{
 private:
     Servo servoController;
 
-    //pins
-    uint8_t enginePin = GPIO_NUM_33;
-
-    uint8_t rudderPin = 0; // yaw
-    uint8_t elevatorsPin = 0; // pitch - down-up
-    uint8_t aileronPin = 0; //roll - left-right
-
-    uint8_t flapsPin = 0;
+    uint8_t RollPin = GPIO_NUM_13; //1
+    uint8_t PitchPin = GPIO_NUM_12; //2
+    uint8_t YawPin = GPIO_NUM_14; //3 
+    uint8_t EnginePin = GPIO_NUM_33; //4
 
 public:
     OutputManager();
